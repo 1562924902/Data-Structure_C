@@ -80,7 +80,8 @@ Status ListEmpty_Sq(SqList L) {
 	else return TRUE;
 }
 
-Status ListIndex_Sq(SqList &L,int i,ElemType e){
+//------实验代码--------
+Status GetElem_Sq(SqList &L,int i,ElemType e){
 	//顺序线性表L 已存在，元素位置为i，且1≤i≤ListLength(L) 
 	//操作结果：找到L 中第i 个数据元素的值,并用e返回其值 
     	int p;

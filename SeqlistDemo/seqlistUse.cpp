@@ -19,15 +19,16 @@ ListPrint_Sq(L); /*检验一下插入的结果，输出表L 的内容*/
 ListInsert_Sq(L,2,20);/* 随机指定插入点位置，假设在第二个元素前插入新的元素，其值为20 */ 
 ListDelete_Sq(L,4,&t);/* 随机指定删除点位置，假设对第四个元素进行删除*/ 
 printf("\n The Deleted value is %d",t);/* 检验一下删除点元素的值*/ 
-ListPrint_Sq(L);/* 检验一下插入和删除后的结果，输出表La 的内容*/ 
-
-printf("\n The List Max number is %d",MaxElem_Sq(L));//输出最大元素
-printf("\n the third number is %d",ListIndex_Sq(L,3,e));
-printf("\n 20 是第%d个数",LocateElem_Sq(L,4));
-
+ListPrint_Sq(L);/* 检验一下插入和删除后的结果，输出表La 的内容*/
 
 ListReverse_Sq(L);/* 将顺序表La 的所有元素进行逆序*/ 
 ListPrint_Sq(L);/* 检验一下逆序的结果，输出表L 的内容*/ 
 printf("\n The List length is %d",ListLength_Sq(L));
 printf("\n The List empty is %d\n",ListEmpty_Sq(L));
+
+//----------测试代码---------- 
+printf("\n--------测试代码----------");
+printf("\n The List Max number is %d",MaxElem_Sq(L));//输出最大元素
+printf("\n the third number is %d",GetElem_Sq(L,3,e));
+printf("\n 20 是第%d个数",LocateElem_Sq(L,4));
 }

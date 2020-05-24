@@ -3,10 +3,12 @@
 
 /* 二叉树的数据类型可以以是字符型，也可以是整型，可在程序中使用条件编译作出判断和控制*/ 
 #define CHAR /* 字符型， 本例是采用字符型作为数据类型*/ 
+
+
 //-------------------------------------
 /* #define INT /* 整型（二者选一） */ 
 #ifdef CHAR 
-typedef char TElemType; 
+typedef char TElemType;
 TElemType Nil=' '; /* 字符型以空格符为空*/
 #endif 
 
@@ -16,7 +18,14 @@ TElemType Nil=0; /* 整型以0 为空*/
 #endif 
 //---------------------------------------
 #include"BinTreeDef.h" /* 二叉树链式存储结构定义*/ 
+typedef BiTree SElemType; 
+#include"SqStackDef.h"
+
+#include"SqStackAlgo.h"
 #include"BinTreeAlgo.h" /* 二叉树基本算法和扩展算法定义*/ 
+
+
+
 Status visitT(TElemType e) 
 {
 #ifdef CHAR
@@ -45,6 +54,7 @@ printf("二叉树的根为: %d\n",e1);
 #endif 
 else
 printf("树空，无根\n"); 
+
 #ifdef CHAR 
 printf("请先序输入二叉树(如:ab 三个空格表示a 为根结点,b 为左子树的二叉树)\n"); 
 #endif 
@@ -63,12 +73,17 @@ printf("二叉树的根为: %d\n",e1);
 #endif 
 else
 printf("树空，无根\n"); 
+
 printf("中序递归遍历二叉树:\n"); 
 InOrderTraverse(T,visitT); 
 printf("\n后序递归遍历二叉树:\n"); 
 PostOrderTraverse(T,visitT); 
 
-printf("\n二叉树的深度为:\n");
-Deepth(T);
 
+printf("\n  \n");
+printf("----------验证部分----------");
+printf("\n二叉树的深度为:%d\n",Deepth(T));
+printf("----栈的非递归中序遍历----\n");
+StackInOrderTraverse(T,visitT);
+printf("\n");
 }

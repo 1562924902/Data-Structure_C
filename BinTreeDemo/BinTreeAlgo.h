@@ -108,14 +108,33 @@ Visit(T->data); /* 最后访问根结点*/
 
 
 int Deepth(BiTree T)
-{int m,n;
-m=n=0;
-if(T==NULL) return 0;
-else
+{//计算二叉树T的深度
+	int m,n;
+	if(T==NULL) return 0; //如果是空树，深度为0；递归结束
+	else
 {
-	m=Deepth(T->lchild);
-	n=Deepth(T->rchild);
-	if(m>n) return (m+1);
+	m=Deepth(T->lchild);//递归计算左子树的深度为m
+	n=Deepth(T->rchild);//递归计算右子树的深度为n
+	if(m>n) return (m+1);//二叉树的深度为m和n的较大者加1
 	else return (n+1);
 }
 }
+
+Status StackInOrderTraverse(BiTree T,Status(*Visit)(TElemType)){
+	//采用二叉链表存储结构，Visit是对数据元素操作的应用函数
+	//中序遍历二叉树T的非递归算法，对每个数据元素调用函数Visit
+	SqStack S;
+	InitStack(S);
+	Push(S,T);   //根指针进栈
+	BiTree p = T;
+	while(!StackEmpty(S)){
+		while(GetTop(S,p)&&p) Push(S,p->lchild);  //向左走到尽头
+		Pop(S,p);			 //空指针退栈
+		if(!StackEmpty(S)){  //访问节点，向右一步
+			Pop(S,p); if(!Visit(p->data)) return ERROR;
+			Push(S,p->rchild);
+		}//if
+	}//while
+	return OK;
+}//StackInOrderTraverse
+
