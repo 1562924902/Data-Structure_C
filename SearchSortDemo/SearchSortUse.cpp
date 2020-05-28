@@ -14,16 +14,18 @@ for(i=1;i<=L.length;i++)
 printf("(%d,%d)",L.r[i].key,L.r[i].otherinfo);
 printf("\n");
 }
+
 void main()
 {
 sortstruct d[N]={{49,1},{38,2},{65,3},{97,4},{76,5},{13,6},{27,7},{49,8},{55,9},{4,10}};
 SqList l1,l2,l3,st;
 int i,s,j;
-int dt[T]={5,3,1};
+
 List_Creat_Sq(st,N); /* 由全局数组产生静态查找表st */
 for(i=0;i<N;i++) /* 给l1.r 赋值*/
-st.r[i+1]=d[i];
+	st.r[i+1]=d[i];
 st.length=N;
+
 l3=l2=l1=st; /* 复制顺序表l2、l3 与l1 相同*/
 printf("排序前:\n");
 print1(st);
@@ -35,22 +37,39 @@ if(i)
 printf("%d\n",(*(st.r+i)).otherinfo);
 else
 printf("没找到\n");
+
 InsertSort(l1);
 printf("直接插入排序后:\n");
 print1(l1);
 printf("\n") ;
+
 BInsertSort(l2);
 printf("折半插入排序后:\n");
 print1(l2);
 printf("\n") ;
 printf("请输入待折半查找的关键字: ");
 scanf("%d",&s);
-j=List_BinSearch_Sq(l3,s);
+j=List_BinSearch_Sq(l2,s);
 if(j)
 printf("查找了%d 次！\n",j);
 else
 printf("没找到\n");
 
+
 //-------------测试代码-------------
+printf("--------希尔排序测试-----------");
+int dt[T]={5,3,1};
+List_Creat_Sq(l3,N); /* 由全局数组产生静态查找表st */
+for(i=0;i<N;i++) /* 给l1.r 赋值*/
+	l3.r[i+1]=d[i];
+l3.length=N;
+
+printf("\n希尔排序前:");
+print1(l3);
+ShellSort(l3,dt,T);		//希尔排序
+printf("\n希尔排序后：");
+print1(l3);
+
+
 
 }

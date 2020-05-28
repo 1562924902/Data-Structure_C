@@ -3,7 +3,7 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "linklistUse"=".\linklistUse.dsp" - Package Owner=<4>
+Project: "HashTableDemo"=".\HashTableDemo.dsp" - Package Owner=<4>
 
 Package=<5>
 {{{

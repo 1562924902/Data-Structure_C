@@ -32,3 +32,48 @@ L.r[j+1]=L.r[j]; /* 记录后移*/
 L.r[high+1]=L.r[0]; /* 插入*/
 }
 }
+
+
+//-----------希尔排序------------------
+void ShellInsert(SqList &L,int dk){
+	//对顺序表L做一趟增量为dk的希尔插入排序
+	for(int i=dk+1;i<=L.length;++i)
+		if(L.r[i].key <L.r[i-dk].key)
+		{
+			L.r[0]=L.r[i];	//暂存在L.r[0]
+			for(int j =i-dk; j>0&&L.r[0].key <L.r[j].key;j-=dk)
+				L.r[j+dk]=L.r[j];	//记录后移，知道找到插入位置
+			L.r[j+dk]=L.r[0];	//将r[0]即原r[i]，插入到正确位置
+		}//if
+}//ShellInsert
+
+void ShellSort(SqList &L,int dt[],int t){
+	//按增量序列dt[0..t-1]对顺序表L做t趟希尔排序
+	for(int k=0;k<t;++k)
+		ShellInsert(L,dt[k]);	//一趟增量为dt[t]的希尔插入排序
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

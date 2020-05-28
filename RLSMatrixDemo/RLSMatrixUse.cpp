@@ -6,26 +6,30 @@ typedef int SElemType; /* 定义元素类型为整型*/
 
 void main() 
 { 
+
 	RLSMatrix M;
 	printf("请输入矩阵M\n");
 	InPutRLSMatrix(M);
 	OutPutRLSMatrix(M);
-    TransposeSMatrix(M);
+	printf("矩阵M的转置矩阵为:\n");
+	TransposeSMatrix(M);
+    OutPutRLSMatrix(M);
+
+
 	/*...................................
 输入数据测试完成矩阵乘法函数*/
-	RLSMatrix N1,N2;
-
+	printf("----------稀疏矩阵乘法测试-----------");
+	RLSMatrix N1,N2,Q;
 	printf("\n------请输入矩阵N1-----\n");
 	InPutRLSMatrix(N1);
 	OutPutRLSMatrix(N1);
+	printf("\n------请输入矩阵N2-----\n");
+	InPutRLSMatrix(N2);
+	OutPutRLSMatrix(N2);
 
-
-
-//------计算M与N1,N2的积-----
-	RLSMatrix Q1,Q2;
-	MultSMatrix(M,N1,Q1);
-	printf("\n----M与N1的乘积为----\n");
-	OutPutRLSMatrix(Q1);
-
-
-} 
+	
+//------计算N1与N2的积-----
+	printf("\n----N1与N2的乘积为----\n");
+	MultSMatrix(N1,N2,Q);
+	OutPutRLSMatrix(Q);
+	}
